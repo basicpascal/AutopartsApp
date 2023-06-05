@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AutopartsApp</string>
+    <string name="title_activity_part_detail">PartDetailActivity</string>
+</resources>
