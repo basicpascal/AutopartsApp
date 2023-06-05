@@ -1,4 +1,4 @@
-package com.mirea.autopartsapp;
+package com.mirea.autopartsapp.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

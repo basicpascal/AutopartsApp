@@ -1,4 +1,4 @@
-package com.mirea.autopartsapp;
+package com.mirea.autopartsapp.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirea.autopartsapp.Adapter.PartsAdapter;
+import com.mirea.autopartsapp.Model.Part;
+import com.mirea.autopartsapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PartsAdapter.OnItemClickListener {
+public class PartListActivity extends AppCompatActivity implements PartsAdapter.OnItemClickListener {
 
     private TextView titleTextView;
     private RecyclerView partsRecyclerView;

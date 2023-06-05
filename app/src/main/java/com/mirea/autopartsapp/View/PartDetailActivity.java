@@ -1,10 +1,13 @@
-package com.mirea.autopartsapp;
+package com.mirea.autopartsapp.View;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.mirea.autopartsapp.Model.Part;
+import com.mirea.autopartsapp.R;
 
 import java.util.Objects;
 
