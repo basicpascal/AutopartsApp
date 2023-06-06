@@ -53,11 +53,11 @@ public class PartListActivity extends AppCompatActivity implements PartsAdapter.
     }
 
     @Override
-    public void onItemClick(int position) {
-        Part part = partsList.get(position);
+    public void onItemClick(Part part) {
         Intent intent = new Intent(this, PartDetailActivity.class);
         intent.putExtra("part", part); // Передача объекта Part
         startActivity(intent);
     }
 
 }
+

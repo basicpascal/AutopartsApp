@@ -1,5 +1,6 @@
 package com.mirea.autopartsapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,12 @@ public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.PartsViewHol
     private OnItemClickListener onItemClickListener;
 
     public PartsAdapter(List<Part> parts) {
-        this.partsList = new ArrayList<>();
+        this.partsList = new ArrayList<>(parts);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Part> parts) {
-        this.partsList = parts;
+        this.partsList = new ArrayList<>(parts);
         notifyDataSetChanged();
     }
 
@@ -51,7 +53,7 @@ public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.PartsViewHol
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(Part part);
     }
 
     public class PartsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -77,7 +79,8 @@ public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.PartsViewHol
             if (onItemClickListener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    onItemClickListener.onItemClick(position);
+                    Part part = partsList.get(position);
+                    onItemClickListener.onItemClick(part);
                 }
             }
         }
