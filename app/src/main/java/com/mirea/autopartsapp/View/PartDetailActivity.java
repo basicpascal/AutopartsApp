@@ -1,11 +1,15 @@
 package com.mirea.autopartsapp.View;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.mirea.autopartsapp.Model.Part;
@@ -30,6 +34,7 @@ public class PartDetailActivity extends AppCompatActivity {
 
         partImageView = findViewById(R.id.partImageView);
         TextView partDescriptionTextView = findViewById(R.id.partDescriptionTextView);
+        Button shopButton = findViewById(R.id.shopButton);
 
         if (getIntent().hasExtra(EXTRA_PART)) {
             Part part = getIntent().getParcelableExtra(EXTRA_PART);
@@ -37,6 +42,8 @@ public class PartDetailActivity extends AppCompatActivity {
                 setTitle(part.getName());
                 loadImage(part.getImageUrl());
                 partDescriptionTextView.setText(part.getDescription());
+
+                shopButton.setOnClickListener(v -> openShop(part.getShopUrl()));
             }
         }
     }
@@ -47,6 +54,11 @@ public class PartDetailActivity extends AppCompatActivity {
                 .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.error_image)
                 .into(partImageView);
+    }
+
+    private void openShop(String shopUrl) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopUrl));
+        startActivity(intent);
     }
 
     @Override

@@ -55,4 +55,8 @@ public class Part implements Parcelable {
     public String getImageUrl() {
         return imageUrl;
     }
+
+    public String getShopUrl() {
+        return "https://www.autodoc.ru/";
+    }
 }

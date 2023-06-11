@@ -29,4 +29,13 @@
         android:padding="16dp"
         android:textAppearance="?android:textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/shopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/partDescriptionTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Купить" />
+
 </RelativeLayout>
