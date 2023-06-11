@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mirea.autopartsapp.Model.Part;
 import com.mirea.autopartsapp.R;
 
@@ -58,20 +60,26 @@ public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.PartsViewHol
 
     public class PartsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView partNameTextView;
-        private TextView partDescriptionTextView;
+        private final ImageView partImageView;
+        private final TextView partNameTextView;
+        private final TextView partDescriptionTextView;
 
         public PartsViewHolder(View itemView) {
             super(itemView);
+            partImageView = itemView.findViewById(R.id.partImageView);
             partNameTextView = itemView.findViewById(R.id.partNameTextView);
             partDescriptionTextView = itemView.findViewById(R.id.partDescriptionTextView);
-
             itemView.setOnClickListener(this);
         }
 
         public void bind(Part part) {
             partNameTextView.setText(part.getName());
             partDescriptionTextView.setText(part.getDescription());
+            // Load the image from the URL into partImageView using Glide
+            Glide.with(itemView.getContext())
+                    .load(part.getImageUrl())
+                    .placeholder(R.drawable.default_image)
+                    .into(partImageView);
         }
 
         @Override

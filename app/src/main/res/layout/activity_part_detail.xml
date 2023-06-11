@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.PartDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,21 +12,20 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:id="@+id/partNameTextView"
+    <ImageView
+        android:id="@+id/partImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:padding="16dp"
-        android:textAppearance="?android:textAppearanceLarge" />
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/partDescriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/partNameTextView"
+        android:layout_below="@id/partImageView"
         android:padding="16dp"
         android:textAppearance="?android:textAppearanceMedium" />
 

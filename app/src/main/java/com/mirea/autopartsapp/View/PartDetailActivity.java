@@ -4,17 +4,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
 import com.mirea.autopartsapp.Model.Part;
 import com.mirea.autopartsapp.R;
-
 import java.util.Objects;
 
 public class PartDetailActivity extends AppCompatActivity {
-
-    private TextView partNameTextView;
-    private TextView partDescriptionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +20,26 @@ public class PartDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true); // Включение кнопки "назад"
-        getSupportActionBar().setTitle("Part Detail"); // Очистка заголовка активити
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        partNameTextView = findViewById(R.id.partNameTextView);
-        partDescriptionTextView = findViewById(R.id.partDescriptionTextView);
+        ImageView partImageView = findViewById(R.id.partImageView);
+        TextView partDescriptionTextView = findViewById(R.id.partDescriptionTextView);
 
-        // Получение переданной запчасти из параметров
         Part part = getIntent().getParcelableExtra("part");
+        String imageUrl = part.getImageUrl();
 
-        // Заполнение элементов интерфейса информацией о запчасти
-        if (part != null) {
-            partNameTextView.setText(part.getName());
-            partDescriptionTextView.setText(part.getDescription());
+        // Загрузка и отображение изображения
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.error_image)
+                    .into(partImageView);
         }
+        else {
+            partImageView.setImageResource(R.drawable.error_image);
+        }
+            partDescriptionTextView.setText(part.getDescription());
     }
 
     @Override
